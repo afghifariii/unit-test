@@ -1,5 +1,6 @@
 package com.spring.boot.unit.test.controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,24 +16,27 @@ import com.spring.boot.unit.test.entity.Employee;
 
 @Controller
 public class EmployeeController {
-	Employee[] e = new Employee[] { new Employee("ali", "male"), new Employee("siti", "female") };
+	
+	private List<Employee> employees = new ArrayList<Employee>();
 
 	@PostMapping("/employees")
 	@ResponseBody
 	public Employee postEmployee(@RequestBody Employee emp) {
-
+		
+		this.employees.add(emp);
 		return emp;
+	}
+	
+	public EmployeeController() {
+		employees.add(new Employee("ali","male"));
 	}
 
 	@GetMapping("/employees")
 	@ResponseBody
 	public List<Employee> getMale(@RequestParam String gender) {
-		List<Employee> listEmployees = Arrays.asList(e);
 
-		listEmployees = listEmployees.stream().filter(g -> g.getGender().equalsIgnoreCase(gender))
+		return employees.stream().filter(g -> g.getGender().equalsIgnoreCase(gender))
 				.collect(Collectors.toList());
-
-		return listEmployees;
 
 	}
 
