@@ -22,7 +22,7 @@ public class EmployeeControllerTest {
 	}
 	
 	@Test
-	public void getAllEmployees() throws Exception {
+	public void postEmployee() throws Exception {
 		this.mockMvc.perform(post("/employees")
 				.content("{\"name\":\"andy\",\"gender\":\"shemale\"}")
 				.contentType("application/json"))
@@ -30,7 +30,7 @@ public class EmployeeControllerTest {
 	}
 	
 	@Test
-	public void getMaleEmployees() throws Exception {
+	public void getMale() throws Exception {
 		String result = "[{\"name\":\"ali\",\"gender\":\"male\"}]";
 		
 		this.mockMvc.perform(get("/employees?gender=male"))

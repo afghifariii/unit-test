@@ -19,7 +19,7 @@ public class EmployeeController {
 
 	@PostMapping("/employees")
 	@ResponseBody
-	public Employee getAll(@RequestBody Employee emp) {
+	public Employee postEmployee(@RequestBody Employee emp) {
 
 		return emp;
 	}
