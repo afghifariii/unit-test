@@ -36,5 +36,11 @@ public class EmployeeControllerTest {
 		this.mockMvc.perform(get("/employees?gender=male"))
 		.andExpect(content().json(result));
 	}
+	
+	@Test
+	public void findByName() throws Exception {
+		this.mockMvc.perform(get("/employees/anto"))
+		.andExpect(status().isNotFound());
+	}
 
 }
